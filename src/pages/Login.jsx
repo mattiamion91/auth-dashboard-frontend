@@ -20,7 +20,6 @@ function Login() {
             setErrorMessage('Credenziali non Valide')
         }
 
-        //console.log(email, password);
     };
 
     return (
