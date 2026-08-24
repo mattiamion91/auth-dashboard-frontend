@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import jwtDecode from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 
 function JwtDebugger() {
     const { accessToken } = useAuth();

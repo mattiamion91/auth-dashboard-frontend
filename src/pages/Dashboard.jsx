@@ -34,7 +34,7 @@ function Dashboard() {
             } 
         } catch(err) {
             setIsRefreshing('errore durante refresh token')
-            console.error('errore', error);
+            console.error('errore', err);
         } finally {
             setIsRefreshing(false);
         }

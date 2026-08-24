@@ -67,7 +67,7 @@ export function AuthProvider({ children }) {
         }
     }
 
-    const sendRefersh = async () => {
+    const sendRefresh = async () => {
         const refreshToken = localStorage.getItem('refreshToken');
 
         if (!refreshToken) {
@@ -103,7 +103,7 @@ export function AuthProvider({ children }) {
         isAuthenticated: !!accessToken,
         sendLogin,
         sendLogout,
-        sendRefersh
+        sendRefresh
     };
 
     return (
