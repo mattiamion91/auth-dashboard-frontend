@@ -67,12 +67,43 @@ export function AuthProvider({ children }) {
         }
     }
 
+    const sendRefersh = async () => {
+        const refreshToken = localStorage.getItem('refreshToken');
+
+        if (!refreshToken) {
+            console.error('nessun refresh token disponibile');
+            return false
+        }
+
+        try {
+            const res = await fetch('http://localhost:5000/api/auth/refresh', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ refreshToken })
+            });
+
+            if (!res.ok) {
+                throw new Error(`errore: ${res.status}`)
+            }
+
+            const data = await res.json()
+            setAccessToken(data.accessToken)
+            return true
+        } catch (error) {
+            console.error('refresh fallito', error);
+            return false
+        }
+    }
+
     const value = {
         user,
         accessToken,
         isAuthenticated: !!accessToken,
         sendLogin,
-        sendLogout
+        sendLogout,
+        sendRefersh
     };
 
     return (
